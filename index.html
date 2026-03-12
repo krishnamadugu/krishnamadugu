@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Balakrishna Musalimadugu — Flutter Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface2: #16161f;
+      --border: rgba(255,255,255,0.07);
+      --accent: #5b7fff;
+      --accent2: #a78bfa;
+      --accent3: #34d399;
+      --text: #f0f0f8;
+      --muted: #6b7280;
+      --card-bg: rgba(255,255,255,0.03);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; opacity: 0.4;
+    }
+
+    /* ── CURSOR ── */
+    .cursor {
+      width: 10px; height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed; pointer-events: none; z-index: 10000;
+      transform: translate(-50%,-50%);
+      transition: transform 0.1s, width 0.3s, height 0.3s, opacity 0.3s;
+      mix-blend-mode: screen;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid rgba(91,127,255,0.5);
+      border-radius: 50%;
+      position: fixed; pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 clamp(24px, 5vw, 80px);
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+      background: rgba(10,10,15,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 18px;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 14px; font-weight: 500; letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent); color: #fff;
+      border: none; padding: 9px 20px;
+      border-radius: 8px; font-size: 14px; font-weight: 500;
+      cursor: pointer; text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--text); display: block; transition: 0.3s; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px clamp(24px, 5vw, 80px) 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(91,127,255,0.15) 0%, transparent 70%);
+      top: -100px; right: -100px; pointer-events: none;
+    }
+    .hero-glow2 {
+      position: absolute; width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(167,139,250,0.1) 0%, transparent 70%);
+      bottom: 50px; left: 30%; pointer-events: none;
+    }
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 60px; align-items: center;
+      max-width: 1100px; width: 100%;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(91,127,255,0.1);
+      border: 1px solid rgba(91,127,255,0.25);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+      color: var(--accent); text-transform: uppercase;
+      margin-bottom: 24px;
+      opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
+    }
+    .hero-tag::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent3);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(42px, 6vw, 80px);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+      opacity: 0; animation: fadeUp 0.7s 0.2s forwards;
+    }
+    .hero-name .line2 { color: var(--accent); display: block; }
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 22px);
+      color: var(--muted); font-weight: 300;
+      margin-bottom: 28px;
+      opacity: 0; animation: fadeUp 0.7s 0.35s forwards;
+    }
+    .hero-desc {
+      max-width: 520px;
+      color: rgba(240,240,248,0.7);
+      font-size: 16px; line-height: 1.75;
+      margin-bottom: 40px;
+      opacity: 0; animation: fadeUp 0.7s 0.45s forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.7s 0.55s forwards;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff; border: none;
+      padding: 14px 28px; border-radius: 10px;
+      font-size: 15px; font-weight: 500;
+      cursor: pointer; text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(91,127,255,0.35);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text); border: 1px solid var(--border);
+      padding: 14px 28px; border-radius: 10px;
+      font-size: 15px; font-weight: 500;
+      cursor: pointer; text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); background: rgba(91,127,255,0.06); }
+    .hero-stats {
+      display: flex; gap: 32px; margin-top: 48px;
+      opacity: 0; animation: fadeUp 0.7s 0.65s forwards;
+    }
+    .stat { }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px; font-weight: 800; letter-spacing: -0.03em;
+      color: var(--text);
+    }
+    .stat-num span { color: var(--accent); }
+    .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 0.03em; margin-top: 2px; }
+    .hero-img-wrap {
+      position: relative;
+      opacity: 0; animation: fadeIn 0.9s 0.4s forwards;
+    }
+    .hero-img-ring {
+      position: absolute; inset: -12px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(91,127,255,0.25);
+      animation: spin 20s linear infinite;
+    }
+    .hero-img-ring::after {
+      content: ''; position: absolute;
+      top: 10%; left: -4px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .hero-img {
+      width: 220px; height: 220px;
+      border-radius: 50%; object-fit: cover;
+      border: 3px solid rgba(91,127,255,0.3);
+      display: block;
+    }
+    .hero-badge {
+      position: absolute; bottom: 10px; right: -20px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 10px 14px;
+      font-size: 12px; font-weight: 500;
+      display: flex; align-items: center; gap: 6px;
+      white-space: nowrap;
+    }
+    .hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent3); animation: pulse 2s infinite; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 100px clamp(24px, 5vw, 80px); }
+    .section-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.1; margin-bottom: 16px;
+    }
+    .section-desc {
+      color: var(--muted); max-width: 520px;
+      font-size: 16px; line-height: 1.7;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--surface); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .about-text p {
+      color: rgba(240,240,248,0.75);
+      margin-bottom: 16px; line-height: 1.8;
+    }
+    .about-links { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+    .icon-link {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--muted); font-size: 14px; text-decoration: none;
+      padding: 9px 16px;
+      border: 1px solid var(--border); border-radius: 8px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .icon-link:hover { border-color: var(--accent); color: var(--text); }
+    .about-skills-title {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 16px; margin-bottom: 20px;
+    }
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill-pill {
+      padding: 7px 16px; border-radius: 100px;
+      font-size: 13px; font-weight: 500;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .skill-pill:hover { border-color: var(--accent); background: rgba(91,127,255,0.08); }
+    .skill-pill.accent { border-color: rgba(91,127,255,0.4); color: var(--accent); }
+
+    /* ── EXPERIENCE ── */
+    #experience { max-width: 1100px; margin: 0 auto; padding: 100px clamp(24px,5vw,80px); }
+    .exp-header { margin-bottom: 60px; }
+    .exp-timeline { position: relative; padding-left: 32px; }
+    .exp-timeline::before {
+      content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px;
+      width: 1.5px; background: var(--border);
+    }
+    .exp-item {
+      position: relative; margin-bottom: 52px;
+      opacity: 0; transform: translateX(-20px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+    .exp-item.visible { opacity: 1; transform: translateX(0); }
+    .exp-dot {
+      position: absolute; left: -32px; top: 8px;
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 2px solid var(--accent);
+      background: var(--bg);
+    }
+    .exp-dot::after {
+      content: ''; position: absolute; inset: 3px;
+      border-radius: 50%; background: var(--accent);
+    }
+    .exp-meta {
+      display: flex; align-items: baseline; gap: 12px;
+      flex-wrap: wrap; margin-bottom: 4px;
+    }
+    .exp-company {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 18px;
+    }
+    .exp-period {
+      font-size: 12px; color: var(--accent);
+      background: rgba(91,127,255,0.1);
+      border: 1px solid rgba(91,127,255,0.2);
+      padding: 2px 10px; border-radius: 100px;
+    }
+    .exp-role { color: var(--muted); font-size: 14px; margin-bottom: 14px; }
+    .exp-points { list-style: none; }
+    .exp-points li {
+      color: rgba(240,240,248,0.75);
+      font-size: 14px; line-height: 1.7;
+      margin-bottom: 8px; padding-left: 18px;
+      position: relative;
+    }
+    .exp-points li::before {
+      content: '→'; position: absolute; left: 0;
+      color: var(--accent); font-size: 12px;
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--surface); padding: 100px clamp(24px,5vw,80px); }
+    .projects-inner { max-width: 1100px; margin: 0 auto; }
+    .projects-header { margin-bottom: 56px; }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      opacity: 0; transform: translateY(20px);
+      position: relative; overflow: hidden;
+    }
+    .project-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at top left, rgba(91,127,255,0.05), transparent 60%);
+      pointer-events: none;
+    }
+    .project-card.visible { opacity: 1; transform: translateY(0); transition-delay: var(--delay, 0s); }
+    .project-card:hover {
+      border-color: rgba(91,127,255,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .project-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+    .project-name {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 18px; margin-bottom: 8px;
+    }
+    .project-desc {
+      color: var(--muted); font-size: 14px; line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .project-tag {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.04em;
+      padding: 4px 10px; border-radius: 100px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .project-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .store-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 500;
+      padding: 8px 14px; border-radius: 8px;
+      text-decoration: none; transition: 0.2s;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+    }
+    .store-btn:hover { border-color: var(--accent); background: rgba(91,127,255,0.1); }
+    .store-btn.inactive { opacity: 0.35; pointer-events: none; text-decoration: line-through; }
+    .store-btn svg { flex-shrink: 0; }
+
+    /* ── CONTACT ── */
+    #contact { padding: 100px clamp(24px,5vw,80px); max-width: 1100px; margin: 0 auto; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 13px; font-weight: 500; color: var(--muted); }
+    .form-group input,
+    .form-group textarea {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 16px;
+      color: var(--text); font-size: 15px;
+      font-family: 'DM Sans', sans-serif;
+      outline: none; transition: border-color 0.2s;
+      resize: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+    .form-group textarea { min-height: 120px; }
+    .contact-info-item {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 24px;
+    }
+    .contact-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: rgba(91,127,255,0.1);
+      border: 1px solid rgba(91,127,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-info-item a, .contact-info-item span {
+      color: var(--text); font-size: 14px; text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-info-item a:hover { color: var(--accent); }
+    .contact-info-label { font-size: 11px; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 32px clamp(24px,5vw,80px);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 16px; text-decoration: none; color: var(--text);
+    }
+    .footer-logo span { color: var(--accent); }
+    footer p { font-size: 13px; color: var(--muted); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px; background: var(--border);
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE NAV ── */
+    .mobile-menu {
+      display: none; position: fixed;
+      inset: 0; top: 68px;
+      background: rgba(10,10,15,0.97);
+      backdrop-filter: blur(20px);
+      z-index: 99; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Syne', sans-serif; font-size: 28px;
+      font-weight: 700; color: var(--text);
+      text-decoration: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-img-wrap { order: -1; margin: 0 auto; }
+      .hero-stats { gap: 20px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <a class="nav-logo" href="#">BK<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="mailto:krishnamusalimadugu@gmail.com">Hire Me</a>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#experience" onclick="closeMobile()">Experience</a>
+    <a href="#projects" onclick="closeMobile()">Projects</a>
+    <a href="#contact" onclick="closeMobile()">Contact</a>
+  </div>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section id="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-tag">Available for Freelance & Full-time</div>
+        <h1 class="hero-name">
+          Balakrishna
+          <span class="line2">Musalimadugu</span>
+        </h1>
+        <p class="hero-sub">Flutter Developer &amp; Mobile Engineer</p>
+        <p class="hero-desc">
+          I build high-performance cross-platform mobile apps with Flutter — from fintech payment flows
+          to real-time chat platforms, deployed and loved by thousands.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#projects">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            View Projects
+          </a>
+          <a class="btn-ghost" href="mailto:krishnamusalimadugu@gmail.com">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Get in Touch
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-num">3<span>+</span></div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">8<span>+</span></div>
+            <div class="stat-label">Apps Shipped</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">6K<span>+</span></div>
+            <div class="stat-label">SDK Users</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">4.8<span>★</span></div>
+            <div class="stat-label">App Store Rating</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <div class="hero-img-ring"></div>
+        <img class="hero-img" src="profile_pic.png" alt="Balakrishna Musalimadugu" />
+        <div class="hero-badge">
+          <span class="dot"></span> Open to opportunities
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ ABOUT ═══════════ -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Building apps that<br/>people actually love</h2>
+        <p>
+          I'm a dedicated Flutter developer with 3+ years of experience shipping production-grade
+          mobile applications across diverse domains — social media, edtech, agritech, e-commerce,
+          and real-time communication.
+        </p>
+        <p>
+          My journey started at Digimantra Labs and has grown through roles at Colourmoon Technologies
+          and now as a Front-End Developer at IMP — an independent music platform with 4.8★ rating
+          and 1K+ downloads on both app stores.
+        </p>
+        <p>
+          I care deeply about clean architecture, smooth UX, and writing maintainable code that teams
+          can build on for years. Whether it's integrating Razorpay for payment flows or engineering
+          an SDK used by 6K+ enterprise clients — I bring the same precision to every project.
+        </p>
+        <div class="about-links">
+          <a class="icon-link" href="https://linkedin.com/in/krishna" target="_blank">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a class="icon-link" href="https://github.com/krishnamadugu" target="_blank">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a class="icon-link" href="mailto:krishnamusalimadugu@gmail.com">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email
+          </a>
+        </div>
+      </div>
+
+      <div class="about-right reveal">
+        <div class="about-skills-title">Tech Stack</div>
+        <div class="skills-grid">
+          <span class="skill-pill accent">Flutter</span>
+          <span class="skill-pill accent">Dart</span>
+          <span class="skill-pill">GetX</span>
+          <span class="skill-pill">Bloc</span>
+          <span class="skill-pill">Firebase</span>
+          <span class="skill-pill">REST APIs</span>
+          <span class="skill-pill">WebSockets</span>
+          <span class="skill-pill">Google Cloud</span>
+          <span class="skill-pill">Razorpay</span>
+          <span class="skill-pill">Stripe</span>
+          <span class="skill-pill">Agora SDK</span>
+          <span class="skill-pill">Google Maps</span>
+          <span class="skill-pill">Flutter Web</span>
+          <span class="skill-pill">Platform Channels</span>
+          <span class="skill-pill">Deep Linking</span>
+          <span class="skill-pill">App Store Deploy</span>
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">Android Studio</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ EXPERIENCE ═══════════ -->
+  <div id="experience">
+    <div class="exp-header reveal">
+      <div class="section-label">Work History</div>
+      <h2 class="section-title">Where I've built things</h2>
+    </div>
+    <div class="exp-timeline">
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-meta">
+          <span class="exp-company">Independent Music Platform (IMP)</span>
+          <span class="exp-period">May 2025 – Present</span>
+        </div>
+        <div class="exp-role">Front-End Developer · Hyderabad, India</div>
+        <ul class="exp-points">
+          <li>Built a music app tailored for independent artists — 4.8★ rating with 1K+ downloads on both app stores.</li>
+          <li>Developed and optimized Subscription, Music Player, and Reels modules with Razorpay payment integration and efficient API workflows.</li>
+          <li>Managed concurrency for smooth playback, refactored codebase, and implemented scalable architecture patterns.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-meta">
+          <span class="exp-company">Colourmoon Technologies</span>
+          <span class="exp-period">Feb 2024 – May 2025</span>
+        </div>
+        <div class="exp-role">Flutter Developer · Vizag, India</div>
+        <ul class="exp-points">
+          <li>Built Flutter applications across diverse domains — social media, booking systems, and agritech.</li>
+          <li>Integrated third-party services including Google Maps, Firebase, and payment gateways across multiple projects.</li>
+          <li>Resolved cross-application issues and consistently delivered as a strong team contributor.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-meta">
+          <span class="exp-company">Digimantra Labs</span>
+          <span class="exp-period">Mar 2023 – Feb 2024</span>
+        </div>
+        <div class="exp-role">Mobile Application Developer · Mohali, Punjab</div>
+        <ul class="exp-points">
+          <li>Developed and deployed apps in edtech, social media, and e-commerce domains for Android, iOS, and web.</li>
+          <li>Built chat functionality, subscription flows, and payment integrations (Stripe, Razorpay) from scratch.</li>
+          <li>Reduced development time by 20% through reusable modules and improved team collaboration workflows.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-meta">
+          <span class="exp-company">OTPless (via Myways.ai)</span>
+          <span class="exp-period">Jul 2022 – Dec 2022</span>
+        </div>
+        <div class="exp-role">Flutter Developer · Gurugram, Delhi NCR</div>
+        <ul class="exp-points">
+          <li>Engineered a Flutter SDK enabling seamless WhatsApp login integration — adopted by 6K+ enterprise users.</li>
+          <li>Achieved a 30% increase in client conversion rates by simplifying the authentication flow.</li>
+          <li>Tech: Flutter, Firebase, Dart, Platform Channels, Deep Linking.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════ PROJECTS ═══════════ -->
+  <section id="projects">
+    <div class="projects-inner">
+      <div class="projects-header reveal">
+        <div class="section-label">Shipped Work</div>
+        <h2 class="section-title">Apps on the stores</h2>
+        <p class="section-desc">Real production applications — available on Google Play and Apple App Store.</p>
+      </div>
+      <div class="projects-grid">
+
+        <!-- Smoke in the City -->
+        <div class="project-card" style="--delay:0s">
+          <div class="project-icon">🚬</div>
+          <div class="project-name">Smoke in the City</div>
+          <div class="project-desc">
+            A cigar & tobacco discovery platform connecting enthusiasts with local venues, events,
+            and premium products. Built with a rich browsing and booking experience.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Flutter</span>
+            <span class="project-tag">Firebase</span>
+            <span class="project-tag">REST API</span>
+          </div>
+          <div class="project-links">
+            <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.smoke.smoke" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1.01-1.3 1.67-.76l14 8.5c.59.36.59 1.16 0 1.52l-14 8.5C4.01 21.8 3 21.33 3 20.5z"/></svg>
+              Google Play
+            </a>
+            <a class="store-btn" href="https://apps.apple.com/us/app/smoke-in-the-city/id6449352794" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              App Store
+            </a>
+          </div>
+        </div>
+
+        <!-- Involvvely -->
+        <div class="project-card" style="--delay:.1s">
+          <div class="project-icon">📚</div>
+          <div class="project-name">Involvvely</div>
+          <div class="project-desc">
+            Online tutoring platform connecting teachers, parents, and students. Built session booking,
+            profiles, auth, notifications, messaging, and payment modules. Also shipped Flutter Web
+            version that grew user base by 18%. 650+ active users.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Flutter</span>
+            <span class="project-tag">GetX</span>
+            <span class="project-tag">Firebase</span>
+            <span class="project-tag">Stripe</span>
+            <span class="project-tag">Flutter Web</span>
+            <span class="project-tag">GCP</span>
+          </div>
+          <div class="project-links">
+            <a class="store-btn inactive" href="#" title="Link unavailable">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1.01-1.3 1.67-.76l14 8.5c.59.36.59 1.16 0 1.52l-14 8.5C4.01 21.8 3 21.33 3 20.5z"/></svg>
+              Play (unavailable)
+            </a>
+            <a class="store-btn" href="https://apps.apple.com/us/app/involvvely/id1576857095" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              App Store
+            </a>
+          </div>
+        </div>
+
+        <!-- Quota Games -->
+        <div class="project-card" style="--delay:.2s">
+          <div class="project-icon">🎮</div>
+          <div class="project-name">Quota Games</div>
+          <div class="project-desc">
+            A social gaming platform where players compete, track quotas, and interact with
+            their gaming community. Smooth UX built with Flutter and real-time backend.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Flutter</span>
+            <span class="project-tag">Firebase</span>
+            <span class="project-tag">REST API</span>
+          </div>
+          <div class="project-links">
+            <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.quota.quota_games" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1.01-1.3 1.67-.76l14 8.5c.59.36.59 1.16 0 1.52l-14 8.5C4.01 21.8 3 21.33 3 20.5z"/></svg>
+              Google Play
+            </a>
+          </div>
+        </div>
+
+        <!-- Play Dates -->
+        <div class="project-card" style="--delay:.3s">
+          <div class="project-icon">📅</div>
+          <div class="project-name">Play Dates</div>
+          <div class="project-desc">
+            A social scheduling app helping users coordinate and plan activities with friends.
+            Features clean event flows, user profiles, and notification systems.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Flutter</span>
+            <span class="project-tag">Firebase</span>
+            <span class="project-tag">Social</span>
+          </div>
+          <div class="project-links">
+            <a class="store-btn inactive" href="#" title="Link currently unavailable">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1.01-1.3 1.67-.76l14 8.5c.59.36.59 1.16 0 1.52l-14 8.5C4.01 21.8 3 21.33 3 20.5z"/></svg>
+              Play (unavailable)
+            </a>
+          </div>
+        </div>
+
+        <!-- Pulse Chat -->
+        <div class="project-card" style="--delay:.4s">
+          <div class="project-icon">💬</div>
+          <div class="project-name">Pulse Chat</div>
+          <div class="project-desc">
+            A feature-rich WhatsApp-like chat platform for property buyers and sellers.
+            Video calls via Agora SDK, event planning, Cloudinary media hosting, and real-time messaging.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Flutter</span>
+            <span class="project-tag">Bloc</span>
+            <span class="project-tag">WebSockets</span>
+            <span class="project-tag">Agora SDK</span>
+            <span class="project-tag">Cloudinary</span>
+          </div>
+          <div class="project-links">
+            <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.deehiy.app" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1.01-1.3 1.67-.76l14 8.5c.59.36.59 1.16 0 1.52l-14 8.5C4.01 21.8 3 21.33 3 20.5z"/></svg>
+              Google Play
+            </a>
+          </div>
+        </div>
+
+        <!-- Fresh Up -->
+        <div class="project-card" style="--delay:.5s">
+          <div class="project-icon">🌿</div>
+          <div class="project-name">Fresh Up</div>
+          <div class="project-desc">
+            A fresh, clean utility or lifestyle app — streamlined UX and performant Flutter architecture
+            optimized for a great daily driver experience.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Flutter</span>
+            <span class="project-tag">Firebase</span>
+            <span class="project-tag">REST API</span>
+          </div>
+          <div class="project-links">
+            <a class="store-btn" href="https://play.google.com/store/apps/details?id=space.freshup" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1.01-1.3 1.67-.76l14 8.5c.59.36.59 1.16 0 1.52l-14 8.5C4.01 21.8 3 21.33 3 20.5z"/></svg>
+              Google Play
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CONTACT ═══════════ -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="section-label">Let's Talk</div>
+        <h2 class="section-title">Have a project in mind?</h2>
+        <p class="section-desc" style="margin-bottom: 40px;">
+          Whether you need a Flutter developer for freelance work or a full-time role, I'd love to hear
+          about what you're building.
+        </p>
+
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">Email</div>
+            <a href="mailto:krishnamusalimadugu@gmail.com">krishnamusalimadugu@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">Phone</div>
+            <a href="tel:+917997178899">+91 7997178899</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" fill="currentColor" stroke="var(--accent)" stroke-width="0" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">LinkedIn</div>
+            <a href="https://linkedin.com/in/krishna" target="_blank">linkedin.com/in/krishna</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">GitHub</div>
+            <a href="https://github.com/krishnamadugu" target="_blank">github.com/krishnamadugu</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <form class="contact-form" onsubmit="handleForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" placeholder="Project enquiry / Job opportunity" />
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:fit-content">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Send Message
+          </button>
+          <p id="form-msg" style="font-size:13px; color: var(--accent3); display:none;">✓ Message noted! I'll reach out to you soon.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer>
+    <a class="footer-logo" href="#">BK<span>.</span></a>
+    <p>© 2025 Balakrishna Musalimadugu · Flutter Developer</p>
+    <p style="font-size:12px; color: var(--muted);">Hyderabad, India</p>
+  </footer>
+
+  <script>
+    // ── Cursor ──
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    function animCursor() {
+      cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+      rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      requestAnimationFrame(animCursor);
+    }
+    animCursor();
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.style.width = '16px'; cursor.style.height = '16px'; ring.style.width = '50px'; ring.style.height = '50px'; });
+      el.addEventListener('mouseleave', () => { cursor.style.width = '10px'; cursor.style.height = '10px'; ring.style.width = '36px'; ring.style.height = '36px'; });
+    });
+
+    // ── Scroll Reveal ──
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .exp-item, .project-card').forEach(el => obs.observe(el));
+
+    // ── Mobile Menu ──
+    const ham = document.getElementById('hamburger');
+    const mob = document.getElementById('mobileMenu');
+    ham.addEventListener('click', () => mob.classList.toggle('open'));
+    function closeMobile() { mob.classList.remove('open'); }
+
+    // ── Contact Form ──
+    function handleForm(e) {
+      e.preventDefault();
+      document.getElementById('form-msg').style.display = 'block';
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
