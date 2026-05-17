@@ -116,12 +116,3 @@ If you're:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/krishnamadugu/)
 [![Instagram DM](https://img.shields.io/badge/Instagram%20DM-E4405F?style=flat&logo=instagram&logoColor=white)](https://instagram.com/wyrdprogrammer)
 
----
-
-<div align="center">
-
-*"The best way to predict the future is to build it. In public."*
-
-![Profile Views](https://komarev.com/ghpvc/?username=krishnamadugu&color=7c3aed&style=flat&label=profile+views)
-
-</div>
