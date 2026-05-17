@@ -1,57 +1,156 @@
-# Hi there, I'm Krishna! 👋 🚀
+<div align="center">
 
-### 📱 Mobile Application Engineer | 🧠 Aspiring AI & Data Engineer | 🎥 Tech Educator
+# hey, I'm Krishna 🌑
 
-I am a professional Software Engineer with over 3 years of experience specializing in building high-performance, beautiful, and scalable mobile experiences. While my core strength lies deeply in cross-platform mobile architecture, I am currently scaling my expertise into Artificial Intelligence, Generative AI, and Data Engineering to build the next generation of smart, data-driven applications.
+### Flutter Dev · Mobile Architect · AI/ML Explorer · Tech Content Creator
 
-Beyond writing production-grade code, I run **Wyrd Programmer**, a tech education brand dedicated to breaking down complex architectures, programming workflows, and productivity frameworks for developers.
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=18&pause=1000&color=A78BFA&center=true&vCenter=true&width=600&lines=Building+apps+that+ship+to+production.;Exploring+the+dark+side+of+programming.;3%2B+years+in+Flutter+%26+mobile+architecture.;Learning+AI%2FML+%26+breaking+things+publicly.)](https://git.io/typing-svg)
 
----
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/krishnamadugu/)
+[![Twitter](https://img.shields.io/badge/X%20%2F%20Twitter-000000?style=flat&logo=x&logoColor=white)](https://twitter.com/krishnamadugu)
+[![Instagram](https://img.shields.io/badge/@wyrdprogrammer-E4405F?style=flat&logo=instagram&logoColor=white)](https://instagram.com/wyrdprogrammer)
+[![Portfolio](https://img.shields.io/badge/Portfolio-111827?style=flat&logo=githubpages&logoColor=white)](https://krishnamadugu.github.io/krishnamadugu)
 
-### 🛠️ My Tech Stack & Toolkit
-
-| Category | Technologies & Tools |
-| :--- | :--- |
-| **Mobile Development** | ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=flat&logo=Flutter&logoColor=white) ![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=flat&logo=Dart&logoColor=white) ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat&logo=android&logoColor=white) ![iOS](https://img.shields.io/badge/iOS-000000?style=flat&logo=ios&logoColor=white) |
-| **Languages & Systems** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) ![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=java&logoColor=white) ![C++](https://img.shields.io/badge/C++-00599C?style=flat&logo=c%2B%2B&logoColor=white) |
-| **AI & Data Engineering** | ![Artificial Intelligence](https://img.shields.io/badge/GenAI%20%26%20LLMs-🤖-blueviolet?style=flat) ![Data Engineering](https://img.shields.io/badge/Data%20Engineering-⚙️-blue?style=flat) |
-| **Tools & Ecosystems** | ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=flat&logo=git&logoColor=white) ![MacBook Air](https://img.shields.io/badge/Apple-MacBook%20M4-999999?style=flat&logo=apple&logoColor=white) ![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white) ![Android Studio](https://img.shields.io/badge/Android%20Studio-3DDC84?style=flat&logo=android-studio&logoColor=white) |
+</div>
 
 ---
 
-### ⚡ What I'm Up To Right Now
+## who I am
 
-- 💼 **Freelancing & Consulting:** Architecting a massive, production-grade enterprise Flutter mobile application featuring over 35+ complex screen states and advanced local caching.
-- 🎯 **Career Transition:** Executing a strict, deep-dive learning curriculum into Machine Learning pipelines, LLM APIs, and scalable Data Engineering architectures.
-- 🎬 **Content Creation:** Scripting and building high-signal technical deep dives, app refactoring breakdowns, and productivity frameworks for **Wyrd Programmer**.
-- 🪵 **Monk Mode:** Actively tracking rigorous daily schedules balancing software engineering, deep-work technical learning blocks, and elite physical strength training.
+I'm a mobile engineer based in Hyderabad, India with **3+ years of experience** building cross-platform apps in Flutter — shipped on both the App Store and Play Store. I work across the full mobile stack, from clean architecture and state management to Supabase backends and REST API integrations.
 
----
+Right now I'm deep in the intersection of **mobile development and AI/ML** — building smarter apps, exploring LLM integrations, and documenting the journey on [@wyrdprogrammer](https://instagram.com/wyrdprogrammer).
 
-### 📂 Featured Open Source Packages & Highlights
-
-I love publishing clean, modular utilities that solve real layout and UI problems in the Flutter ecosystem. Check out a few of my custom packages right here on my profile:
-
-* **[text_gradient_button_krishna](https://github.com/krishnamadugu/text_gradient_button_krishna)** - A highly customizable, sleek gradient text button layout plugin for modern Flutter applications.
-* **[blank_screen_krishna](https://github.com/krishnamadugu/blank_screen_krishna)** - A plug-and-play scaffolding package designed to eliminate boilerplate when managing empty, error, or placeholder screen states.
-* **[attendance_management](https://github.com/krishnamadugu/attendance_management)** - A clean architecture foundation demonstrating robust state management, employee tracking, and clean UI workflows.
+I believe the best engineers are the ones who can build *and* explain. So I create content, ship open-source packages, and take on freelance projects that push my limits.
 
 ---
 
-### 📊 GitHub Analytics
+## what I build with
 
-<p align="left">
-  <img src="https://github-readme-stats.vercel.app/api?username=krishnamadugu&show_icons=true&theme=tokyonight&count_private=true" alt="Krishna's GitHub Stats" height="180px"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=krishnamadugu&layout=compact&theme=tokyonight&hide=html,css,javascript" alt="Top Languages" height="180px"/>
-</p>
+**Mobile**
+![Flutter](https://img.shields.io/badge/Flutter-02569B?style=flat&logo=flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-0175C2?style=flat&logo=dart&logoColor=white)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=flat&logo=android&logoColor=white)
+![iOS](https://img.shields.io/badge/iOS-000000?style=flat&logo=ios&logoColor=white)
+
+**Backend & Data**
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat&logo=supabase&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat&logo=firebase&logoColor=black)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![REST API](https://img.shields.io/badge/REST%20API-FF6C37?style=flat&logo=postman&logoColor=white)
+
+**Languages**
+![Dart](https://img.shields.io/badge/Dart-0175C2?style=flat&logo=dart&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=java&logoColor=white)
+![C++](https://img.shields.io/badge/C++-00599C?style=flat&logo=cplusplus&logoColor=white)
+
+**Tooling**
+![Git](https://img.shields.io/badge/Git-F05033?style=flat&logo=git&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white)
+![Android Studio](https://img.shields.io/badge/Android%20Studio-3DDC84?style=flat&logo=android-studio&logoColor=white)
+![Xcode](https://img.shields.io/badge/Xcode-147EFB?style=flat&logo=xcode&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white)
 
 ---
 
-### 🤝 Let's Connect & Collaborate!
+## featured projects
 
-Whether you want to discuss advanced state management in Flutter, talk about embedding custom AI pipelines into mobile products, or collaborate on tech education initiatives, feel free to reach out!
+### 📱 production apps
 
-- 👔 **LinkedIn:** [linkedin.com/in/krishnamadugu](https://linkedin.com/in/krishnamadugu) *(Update with your actual URL suffix if different!)*
-- 🌐 **Tech Channel:** Wyrd Programmer
+| Project | Description | Platform | Stack |
+|---|---|---|---|
+| **IMP** | A productivity app built around focus and task clarity | Android & iOS | Flutter, Firebase |
+| **Smoke in the City** | A lifestyle discovery app for experiences in your city | Android & iOS | Flutter |
+| **Involvvely** | Community engagement platform — published on the App Store | iOS | Flutter |
+| **Pulse Chat** | Real-time chat application with a clean messaging UX | Android & iOS | Flutter, Firebase |
+| **Fresh Up** | A utility app shipped to production | Android & iOS | Flutter |
+| **Quota Games** | Gaming utility app with interactive mechanics | Android & iOS | Flutter |
 
-*"The best way to predict the future is to build it. In public."* 🛠️
+---
+
+### 📦 open source flutter packages
+
+**[text_gradient_button_krishna](https://github.com/krishnamadugu/text_gradient_button_krishna)**
+A customisable gradient text button widget for Flutter. Built for developers who want polished UI without reinventing the wheel.
+`pub.dev` · `Dart` · ⭐ Starred by the community
+
+**[blank_screen_krishna](https://github.com/krishnamadugu/blank_screen_krishna)**
+Plug-and-play scaffolding package that eliminates boilerplate for empty, error, and placeholder screen states — a problem every Flutter dev hits eventually.
+`pub.dev` · `Dart` · Forked by developers
+
+**[attendance_management](https://github.com/krishnamadugu/attendance_management)**
+A clean architecture reference implementation — state management, employee tracking, and production-level UI patterns in Flutter.
+`Dart` · Clean Architecture · BLoC
+
+---
+
+### 🧪 experiments & learning repos
+
+| Repo | What it is |
+|---|---|
+| **musical_notes** | Audio and music experiment in Flutter |
+| **BudgetApp** | Personal finance tracker — clean UI, local state |
+| **Dice-App** | Beginner-friendly Flutter mechanics demo |
+
+---
+
+## github achievements
+
+<div align="left">
+
+| Achievement | What it means |
+|---|---|
+| 🦈 **Pull Shark** | Merged pull requests that others found valuable |
+| 👥 **Pair Extraordinaire** | Collaborated on code with other developers |
+| ⚡ **Quickdraw** | Fast to respond and close issues |
+| 🎯 **YOLO** | Merged without review — shipped with confidence |
+
+</div>
+
+---
+
+## github stats
+
+<div align="center">
+
+![Krishna's GitHub Stats](https://github-readme-stats.vercel.app/api?username=krishnamadugu&show_icons=true&theme=tokyonight&count_private=true&hide_border=true)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=krishnamadugu&layout=compact&theme=tokyonight&hide=html,css,javascript&hide_border=true)
+
+![GitHub Streak](https://streak-stats.demolab.com?user=krishnamadugu&theme=tokyonight&hide_border=true)
+
+</div>
+
+---
+
+## what I'm building right now
+
+- 🏗️ **Enterprise Flutter app** — 35+ complex screen states, advanced local caching, production architecture for a freelance client
+- 🤖 **AI/ML learning sprint** — ML pipelines, LLM APIs, RAG systems — building toward AI-integrated mobile apps
+- 🎬 **[@wyrdprogrammer](https://instagram.com/wyrdprogrammer)** — sharing the dark side of programming: the stuff your CS degree skipped
+- 🎯 **Open source** — more Flutter utilities in progress
+
+---
+
+## work with me
+
+I take on **freelance Flutter projects** — mobile apps from zero to App Store/Play Store, or joining teams that need a senior Flutter pair.
+
+If you're:
+- A startup needing a mobile MVP built right the first time
+- A team that needs a Flutter specialist embedded for a sprint
+- A developer who's stuck — just DM me
+
+[![Email](https://img.shields.io/badge/Email%20Me-D14836?style=flat&logo=gmail&logoColor=white)](mailto:krishnamadugu@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/krishnamadugu/)
+[![Instagram DM](https://img.shields.io/badge/Instagram%20DM-E4405F?style=flat&logo=instagram&logoColor=white)](https://instagram.com/wyrdprogrammer)
+
+---
+
+<div align="center">
+
+*"The best way to predict the future is to build it. In public."*
+
+![Profile Views](https://komarev.com/ghpvc/?username=krishnamadugu&color=7c3aed&style=flat&label=profile+views)
+
+</div>
