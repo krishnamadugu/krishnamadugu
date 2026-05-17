@@ -1,6 +1,6 @@
 <div align="center">
 
-# hey, I'm Krishna 🌑
+# hey, I'm Krishna 👋
 
 ### Flutter Dev · Mobile Architect · AI/ML Explorer · Tech Content Creator
 
@@ -69,32 +69,6 @@ I believe the best engineers are the ones who can build *and* explain. So I crea
 
 ---
 
-### 📦 open source flutter packages
-
-**[text_gradient_button_krishna](https://github.com/krishnamadugu/text_gradient_button_krishna)**
-A customisable gradient text button widget for Flutter. Built for developers who want polished UI without reinventing the wheel.
-`pub.dev` · `Dart` · ⭐ Starred by the community
-
-**[blank_screen_krishna](https://github.com/krishnamadugu/blank_screen_krishna)**
-Plug-and-play scaffolding package that eliminates boilerplate for empty, error, and placeholder screen states — a problem every Flutter dev hits eventually.
-`pub.dev` · `Dart` · Forked by developers
-
-**[attendance_management](https://github.com/krishnamadugu/attendance_management)**
-A clean architecture reference implementation — state management, employee tracking, and production-level UI patterns in Flutter.
-`Dart` · Clean Architecture · BLoC
-
----
-
-### 🧪 experiments & learning repos
-
-| Repo | What it is |
-|---|---|
-| **musical_notes** | Audio and music experiment in Flutter |
-| **BudgetApp** | Personal finance tracker — clean UI, local state |
-| **Dice-App** | Beginner-friendly Flutter mechanics demo |
-
----
-
 ## github achievements
 
 <div align="left">
@@ -125,7 +99,6 @@ A clean architecture reference implementation — state management, employee tra
 
 ## what I'm building right now
 
-- 🏗️ **Enterprise Flutter app** — 35+ complex screen states, advanced local caching, production architecture for a freelance client
 - 🤖 **AI/ML learning sprint** — ML pipelines, LLM APIs, RAG systems — building toward AI-integrated mobile apps
 - 🎬 **[@wyrdprogrammer](https://instagram.com/wyrdprogrammer)** — sharing the dark side of programming: the stuff your CS degree skipped
 - 🎯 **Open source** — more Flutter utilities in progress
@@ -133,8 +106,6 @@ A clean architecture reference implementation — state management, employee tra
 ---
 
 ## work with me
-
-I take on **freelance Flutter projects** — mobile apps from zero to App Store/Play Store, or joining teams that need a senior Flutter pair.
 
 If you're:
 - A startup needing a mobile MVP built right the first time
