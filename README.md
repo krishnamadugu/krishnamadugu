@@ -112,7 +112,7 @@ If you're:
 - A team that needs a Flutter specialist embedded for a sprint
 - A developer who's stuck — just DM me
 
-[![Email](https://img.shields.io/badge/Email%20Me-D14836?style=flat&logo=gmail&logoColor=white)](mailto:krishnamadugu@gmail.com)
+[![Email](https://img.shields.io/badge/Email%20Me-D14836?style=flat&logo=gmail&logoColor=white)](mailto:krishnamusalimadugu@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/krishnamadugu/)
 [![Instagram DM](https://img.shields.io/badge/Instagram%20DM-E4405F?style=flat&logo=instagram&logoColor=white)](https://instagram.com/wyrdprogrammer)
 
